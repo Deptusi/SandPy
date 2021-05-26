@@ -20,7 +20,7 @@ class Sandwich():
         }
         self.sandwich_terminado=False # Variable Boolean que indica cuando se terminan 
         # de agregar ingredientes
-        self.lista_descriptiva=[] # Variable que almacena el tama�o e ingredientes del Sandwich
+        self.lista_descriptiva=[] # Variable que almacena el tamano e ingredientes del Sandwich
     
     def definir_tamano(self):
         print("Opciones:")
@@ -53,13 +53,20 @@ class Sandwich():
             else:
                 print("=> Debe seleccionar un ingrediente de la lista!!")
 
-    def actualizar_precio(self):
-        self.precio=self.tamano[0]
-        for ingrediente in self.lista_descriptiva:
-            self.precio+=ingrediente[0]
+    def actualizar_precio(self, numero_descuento):
+        if (numero_descuento == 0):
+            self.precio=self.tamano[0]
+            for ingrediente in self.lista_descriptiva:
+                self.precio+=ingrediente[0]
+        else:
+            self.precio=self.tamano[0]
+            for ingrediente in self.lista_descriptiva:
+                self.precio+=ingrediente[0]
+            descuento = (100 - numero_descuento) / 100
+            self.precio = self.precio * descuento   
 
-    def imprimir_seleccion(self):
-        self.actualizar_precio()
+    def imprimir_seleccion(self, numero_descuento):
+        self.actualizar_precio(numero_descuento)
         txt=f"Usted seleccionó un sándwich {self.tamano[1]} con "
         if len(self.lista_descriptiva)>0:
             for ingrediente in self.lista_descriptiva:
