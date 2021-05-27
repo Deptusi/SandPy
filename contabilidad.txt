@@ -1,0 +1,10 @@
+1|Triple-Jamon/620;Doble-Pepperoni-Salchichon/531|1151
+2|Triple-Jamon/620|1151
+3|Triple-Jamon/620|1151
+4|Triple-Jamon/620|1151
+5|Triple-Jamon/620|1151
+6|Triple-Jamon/620|1151
+7|Triple-Jamon-Salchichon/620|1000
+8|Triple-Jamon/620|1000
+9|Triple-Jamon/620|1000
+10|Individual-Jamon/620|1000

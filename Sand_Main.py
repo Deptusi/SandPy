@@ -1,5 +1,6 @@
-from Sand_functions import *
-from Sand_classes import *
+
+from Sand_interactions import *
+
 print("Prueba fernando-dev")
 print_Tittle()
-imprimit_total(realizar_ordenes())
+start_program()
