@@ -1,54 +1,24 @@
 from Sand_classes import *
+from Sand_coupons import ingresar_cupon
+from Sand_inventory_control import *
 
 def print_Tittle():
     print("*"*27)
     print("*     SANDWICHES UCAB     *")
     print("*"*27)
 
-def ingresar_cupon():
-    salir = False
-    descuento = 0
-    while not salir:
-        respuesta = input("¿Usted tiene un cupon [s/n]? ")
-        if (respuesta == "s"):
-            codigo_cupon= input("Ingrese el codigo del cupón: ")
-            archivo = open("codigos_cupones.txt", "r")
-            cupones = []
-            for linea in archivo:
-                linea = linea.replace("\n", "")
-                cupones.append(linea)
-            archivo.close()
-            buscar = False
-            for cupon in cupones:
-                codigo = cupon.split()[0]
-                if (codigo_cupon == codigo):
-                    archivo = open("codigos_cupones.txt", "r")
-                    lineas = archivo.readlines()
-                    archivo.close()
-                    archivo_nuevo = open("codigos_cupones.txt", "w")
-                    for linea in lineas:
-                        if (linea.strip("\n") != cupon):
-                            archivo_nuevo.write(linea)
-                    archivo_nuevo.close()
-                    buscar = True
-                    descuento = int(cupon.split()[1])
-                    return descuento
-            if (not buscar):
-                print("No existe este codigo de cupon en el sistema")
-        elif (respuesta == "n"):
-            salir = True
-            return descuento
-        else:
-            print("Ingrese una opción valida")
-
 def ordenar_sandwich(orden_N):
     numero_descuento = ingresar_cupon()
+    contador_ingredientes = devolver_diccionario(orden_N)
+    control_inventario(contador_ingredientes)
     print(f"Sandwich número {orden_N}")
     Sandwich_temporal=Sandwich()
+    Sandwich_temporal.set_contador_ingredientes(contador_ingredientes)
     Sandwich_temporal.definir_tamano()
     imprimir_ingredientes(Sandwich_temporal)
     while not Sandwich_temporal.sandwich_terminado:
         Sandwich_temporal.agregar_ingrediente()
+    guardar_contador_ingrediente(Sandwich_temporal.get_contador_ingredientes())
     Sandwich_temporal.imprimir_seleccion(numero_descuento)
     return Sandwich_temporal
 
