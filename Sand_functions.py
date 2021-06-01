@@ -1,14 +1,26 @@
 from Sand_classes import *
 from Sand_interactions import *
+from Sand_coupons import ingresar_cupon
+from Sand_inventory_control import *
+
+def print_Tittle():
+    print("*"*27)
+    print("*     SANDWICHES UCAB     *")
+    print("*"*27)
 
 def ordenar_sandwich(orden_N):
+    numero_descuento = ingresar_cupon()
+    contador_ingredientes = devolver_diccionario(orden_N)
+    control_inventario(contador_ingredientes)
     print(f"Sandwich número {orden_N}")
     Sandwich_temporal=Sandwich()
+    Sandwich_temporal.set_contador_ingredientes(contador_ingredientes)
     Sandwich_temporal.definir_tamano()
     imprimir_ingredientes(Sandwich_temporal)
     while not Sandwich_temporal.sandwich_terminado:
         Sandwich_temporal.agregar_ingrediente()
-    Sandwich_temporal.imprimir_seleccion()
+    guardar_contador_ingrediente(Sandwich_temporal.get_contador_ingredientes())
+    Sandwich_temporal.imprimir_seleccion(numero_descuento)
     return Sandwich_temporal
 
 def realizar_orden():

@@ -1,6 +1,6 @@
 class Sandwich():
 
-    def __init__(self,numero_de_sandwich=1):
+    def __init__(self,numero_de_sandwich=1,cont_ingred_sand={}):
         self.numero_de_sandwich = numero_de_sandwich
         self.precio = 0
         self.lista_de_tamanos={
@@ -18,9 +18,10 @@ class Sandwich():
             "pp":(38.5, "Pepperoni"),
             "sa":(62.5, "Salchichón")
         }
+        self.contador_ingredientes = cont_ingred_sand
         self.sandwich_terminado=False # Variable Boolean que indica cuando se terminan 
         # de agregar ingredientes
-        self.lista_descriptiva=[] # Variable que almacena el tama�o e ingredientes del Sandwich
+        self.lista_descriptiva=[] # Variable que almacena el tamano e ingredientes del Sandwich
     
     def definir_tamano(self):
         print("Opciones:")
@@ -46,6 +47,10 @@ class Sandwich():
                 self.lista_descriptiva.append(
                     self.lista_de_ingredientes.pop(opcion_seleccionada)
                 )
+                for ingrediente, contador in self.contador_ingredientes.items():
+                    if (ingrediente == opcion_seleccionada):
+                        contador -= 1
+                        self.contador_ingredientes[ingrediente] = contador
                 break
             elif opcion_seleccionada=="":
                 self.sandwich_terminado=True
@@ -53,13 +58,20 @@ class Sandwich():
             else:
                 print("=> Debe seleccionar un ingrediente de la lista!!")
 
-    def actualizar_precio(self):
-        self.precio=self.tamano[0]
-        for ingrediente in self.lista_descriptiva:
-            self.precio+=ingrediente[0]
+    def actualizar_precio(self, numero_descuento):
+        if (numero_descuento == 0):
+            self.precio=self.tamano[0]
+            for ingrediente in self.lista_descriptiva:
+                self.precio+=ingrediente[0]
+        else:
+            self.precio=self.tamano[0]
+            for ingrediente in self.lista_descriptiva:
+                self.precio+=ingrediente[0]
+            descuento_porcentaje = (100 - numero_descuento) / 100
+            self.precio = self.precio * descuento_porcentaje   
 
-    def imprimir_seleccion(self):
-        self.actualizar_precio()
+    def imprimir_seleccion(self, numero_descuento):
+        self.actualizar_precio(numero_descuento)
         txt=f"Usted seleccionó un sándwich {self.tamano[1]} con "
         if len(self.lista_descriptiva)>0:
             for ingrediente in self.lista_descriptiva:
@@ -69,3 +81,9 @@ class Sandwich():
             txt=txt+"Queso"
         print(txt+"\n")
         print(f"Subtotal a pagar por un sándwich {self.tamano[1]}: {self.precio}")
+
+    def get_contador_ingredientes(self):
+        return self.contador_ingredientes
+    
+    def set_contador_ingredientes(self,contador_ingredientes_nuevo):
+        self.contador_ingredientes = contador_ingredientes_nuevo
