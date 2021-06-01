@@ -1,6 +1,6 @@
 from Sand_functions import *
 from Sand_cont import start_cont
-direccion_archivo = 'd:\\Documents\\Universidad\\Python\\Proyecto2\\SandPy\\contabilidad.txt'
+direccion_archivo = 'contabilidad.txt'
 def print_Tittle():
     print("*"*27)
     print("*     SANDWICHES UCAB     *")

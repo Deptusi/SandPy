@@ -1,4 +1,9 @@
+#Sandwiches UCAB
 from Sand_interactions import *
 
-print_Tittle()
-start_program()
+def main():
+    print_Tittle()
+    start_program()
+
+if __name__ == "__main__":
+    main()

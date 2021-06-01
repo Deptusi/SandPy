@@ -13,7 +13,7 @@ def abrir_contabilidad():
     global total_vendido
 
     ## Cambiar la direccion del archivo de contabilidad
-    with open('d:\\Documents\\Universidad\\Python\\Proyecto2\\SandPy\\contabilidad.txt', 'r') as reader:
+    with open('contabilidad.txt', 'r') as reader:
        for line in reader:
             templine = line.split('|')
             print("Orden Numero: " + templine[0])
