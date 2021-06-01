@@ -1,3 +1,5 @@
+from Sand_functions import imprimir_titulo
+
 num_ordenes_tot = 0
 total_vendido = 0
 total_triple = 0
@@ -13,6 +15,7 @@ def abrir_contabilidad():
     global total_vendido
 
     ## Cambiar la direccion del archivo de contabilidad
+    imprimir_titulo()
     with open('contabilidad.txt', 'r') as reader:
        for line in reader:
             templine = line.split('|')
@@ -44,18 +47,17 @@ def abrir_contabilidad():
                 total = templine[1].split('/')[1]
                 print(f"Sandwich tamano: {size}, con los ingredientes: {ingredients}, con un total de: {total}")
             print(f"Total de orden: {templine[2]}")
-            print("*"*28,)
-            num_ordenes_tot = num_ordenes_tot + 1
-            total_vendido = total_vendido + float(templine[2])
-    print("")
-    print("*"*28,)
+            print("*"*35,)
+            num_ordenes_tot += 1
+            total_vendido += float(templine[2])
+    print("\n"+"*"*35)
     print("Total de Ordenes Vendidas: " + str(num_ordenes_tot))
     print("Total Vendido: " + str(total_vendido))
-    print("*"*28,)
+    print("*"*35,)
     print("Ventas por sandwiches")
-    print("Triple: " + str(total_triple))
-    print("Doble: " + str(total_doble))
-    print("Individual: " + str(total_sencilla))
+    print("Triple:\t\t"+ str(total_triple))
+    print("Doble:\t\t" + str(total_doble))
+    print("Individual:\t" + str(total_sencilla))
 
 ## Esta funcion cambia la variable que sea del tamano del sandwich
 ## Parametro que recibe sanwich, tiene la informacion del sandwich
@@ -64,13 +66,13 @@ def abrir_contabilidad():
 def count_sandwich(sandwich):
     if(sandwich == "Triple"):
         global total_triple
-        total_triple = total_triple +  1
+        total_triple += 1
     elif (sandwich == "Doble"):
         global total_doble
-        total_doble = total_doble + 1
+        total_doble += 1
     elif (sandwich == "Individual"):
         global total_sencilla
-        total_sencilla = total_sencilla + 1
+        total_sencilla += 1
 
 ## Funcion necesaria para borrar las variables guardadas
 ## Fernando Gonzalez

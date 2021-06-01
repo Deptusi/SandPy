@@ -1,10 +1,6 @@
 from Sand_functions import *
 from Sand_cont import start_cont
 direccion_archivo = 'contabilidad.txt'
-def print_Tittle():
-    print("*"*27)
-    print("*     SANDWICHES UCAB     *")
-    print("*"*27)
 
 ## Esta funcion se encarga de generar el numero de orden para guardar en el archivo
 ## Fernando Gonzalez
@@ -33,15 +29,16 @@ def guardar_sandwiches(lista_de_ordenes):
         total += sandwich.precio
     
     orden_para_guardar = orden_para_guardar[:-1] + "|" + str(total)
-    print(orden_para_guardar)
+    #print(orden_para_guardar)
     with open(direccion_archivo, 'a+') as outfile:
         outfile.write("\n")
         outfile.write(orden_para_guardar)
     outfile.close()
 
-def imprimit_total(lista_de_ordenes):
+def imprimir_total(lista_de_ordenes):
     guardar_sandwiches(lista_de_ordenes)
-    print("*"*28,)
+    imprimir_titulo()
+    print("*"*35)
     print(f"El pedido tiene un total de {len(lista_de_ordenes)} \
 sándwich(es) por un monto de {sum([sandwich.precio for sandwich in lista_de_ordenes])}")
     
@@ -53,49 +50,50 @@ sándwich(es) por un monto de {sum([sandwich.precio for sandwich in lista_de_ord
 ## Fernando Gonzalez
 ## -version 1.1 - 30/05/2021 cambios por Fernando Gonzalez: cambios para la salida de sistema 
 ## -version 1.0 - 26/05/2021
-def start_program():
+def iniciar_programa():
     ciclo_de_programa=True
     while(ciclo_de_programa):
         seleccion_caso()
         salir=""
         while(salir!="s" and salir!="n"):
-            salir=input("Desea salir? Si(s) - No(n)")
+            salir=input("\n¿Desea salir? [s/n]: ")
             if salir== "s":
                 print("Hasta Luego")
                 ciclo_de_programa = False
             else:
                 if salir == "n":
                     salir==""
-        print("*"*28,)
+        print("*"*35,)
     print("")
 
 ## Esta funcion es para dar al usuario la opcion de escoger que quiere hacer en el sistema
 ## Fernando Gonzalez
 ## version 1.0 - 26/05/2021
 def seleccion_caso():
-    print("Ver Contabilidad (1)")
-    print("Realizar venta de sandwiches (2)")
+    imprimir_titulo()
+    print("Ver Contabilidad\t\t(1)")
+    print("Realizar venta de sandwiches\t(2)\n")
+    
     entrada_datos=""
     while(entrada_datos!="1" and entrada_datos!="2"):
-        entrada_datos=input("Que desea hacer? ")
-    print("*"*28,)
-    print("")
-    if entrada_datos=="1":
-        start_conta()
-    else: 
-        if entrada_datos == "2":
-            start_sale()
-        else:
-            print("Opcion incorrecta, Escoja nuevamente")
+        entrada_datos=input("¿Que desea hacer? ")
+    print("*"*35,"\n")
+
+    if entrada_datos == "1":
+        iniciar_contabilidad()
+    elif entrada_datos == "2":
+        iniciar_venta()
+    else:
+        print("Opcion incorrecta, Escoja nuevamente")
 
 ## Inicia la opcion de contabilidad
 ## Fernando Gonzalez
 ## version 1.0 - 26/05/2021
-def start_conta():
+def iniciar_contabilidad():
     start_cont()
 
 ## Inicia la opcion de venta
 ## Fernando Gonzalez
 ## version 1.0 - 26/05/2021
-def start_sale():
-    imprimit_total(realizar_orden())
+def iniciar_venta():
+    imprimir_total(realizar_ordenes())

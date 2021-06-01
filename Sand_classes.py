@@ -1,7 +1,7 @@
 # autor: German Bermudez
 # Coautores:
 #           Christian Neira
-#           Jesus Requana
+#           Jesus Requena
 #           Fernando Gomes
 
 class Sandwich():
