@@ -4,7 +4,7 @@ from Sand_functions import *
 from Sand_classes import *
 
 def main():
-    print_Tittle()
+    imprimir_titulo()
     start_program()
 
 if __name__ == "__main__":
