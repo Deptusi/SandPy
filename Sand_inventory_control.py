@@ -19,11 +19,11 @@ def devolver_diccionario(numero_orden):
         contador_ingredientes = {
             "ja":5,
             "ch":5,
-            "pi":5,
-            "dq":5,
-            "ac":5,
-            "pp":5,
-            "sa":5
+            "pi":3,
+            "dq":3,
+            "ac":3,
+            "pp":2,
+            "sa":2
         }
         return contador_ingredientes
     else:
@@ -33,9 +33,26 @@ def guardar_contador_ingrediente(diccionario_contador):
     global cont_ingred
     cont_ingred = diccionario_contador
 
-def control_inventario(dicc_contador_ingredientes):
+def control_inventario( dicc_contador_ingredientes ):
     global cont_ingred
     for ingrediente, cantidad in dicc_contador_ingredientes.items():
+        # if (ingrediente == "ja"):
+        #     print(f"Jamón\t\t({ingrediente}) tiene la cantidad: {cantidad}")
+        # elif (ingrediente == "ch"):
+        #     print(f"Champiñones\t({ingrediente}) tiene la cantidad: {cantidad}")
+        # elif (ingrediente == "pi"):
+        #     print(f"Pimentón\t({ingrediente}) tiene la cantidad: {cantidad}")
+        # elif (ingrediente == "dq"):
+        #     print(f"Doble Queso\t({ingrediente}) tiene la cantidad: {cantidad}")
+        # elif (ingrediente == "ac"):
+        #     print(f"Aceitunas\t({ingrediente}) tiene la cantidad: {cantidad}")
+        # elif (ingrediente == "pp"):
+        #     print(f"Pepperoni\t({ingrediente}) tiene la cantidad: {cantidad}")
+        # elif (ingrediente == "sa"):
+        #     print(f"Salchichón\t({ingrediente}) tiene la cantidad: {cantidad}")
+        # if (cantidad == 0):
+        #     print(f"Se agoto la existencia de este ingrediente {ingrediente}")
+        #     cantidad_recargar = int(input("Ingrese la cantidad que sea recargar en el ingrediente: "))
         if (cantidad == 0):
             print(f"Se agoto la existencia de {lista_de_ingredientes[ingrediente]}")
             while True:

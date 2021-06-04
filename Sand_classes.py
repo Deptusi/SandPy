@@ -1,7 +1,7 @@
 # autor: German Bermudez
 # Coautores:
 #           Christian Neira
-#           Jesus Requana
+#           Jesus Requena
 #           Fernando Gomes
 
 class Sandwich():
@@ -16,14 +16,15 @@ class Sandwich():
         }
         self.tamano=""
         self.lista_de_ingredientes={
-            "ja":[40, "Jamon"],
-            "ch":[35, "Champinones"],
-            "pi":[30, "Pimenton"],
-            "dq":[40, "Doble Queso"],
-            "ac":[57.5, "Aceitunas"],
-            "pp":[38.5, "Pepperoni"],
-            "sa":[62.5, "Salchichon"]
+            "ja":(40, "Jamón"),
+            "ch":(35, "Champiñones"),
+            "pi":(30, "Pimentón"),
+            "dq":(40, "Doble Queso"),
+            "ac":(57.5, "Aceitunas"),
+            "pp":(38.5, "Pepperoni"),
+            "sa":(62.5, "Salchichón")
         }
+        self.contador_ingredientes = cont_ingred_sand
         self.sandwich_terminado=False # Variable Boolean que indica cuando se terminan 
         # de agregar ingredientes
         self.lista_descriptiva=[] # Variable que almacena el tamano e ingredientes del Sandwich
@@ -36,7 +37,7 @@ class Sandwich():
             if opcion_seleccionada in self.lista_de_tamanos:
                 break
             else:
-                print("=> Debe seleccionar el tamano correcto!!")
+                print("=> Debe seleccionar el tamaño correcto!!")
         self.tamano=(self.lista_de_tamanos[opcion_seleccionada])
 
     def seleccionar_ingredientes(self):
@@ -78,12 +79,14 @@ class Sandwich():
 
     def imprimir_seleccion(self, numero_descuento):
         """Realiza un resumen de la orden al finalizar el pedido"""
+        print (f"Cupón válido,  descuento del {numero_descuento}% aplicado\n")
         self.actualizar_precio(numero_descuento)
+        print("*"*35)
         txt=f"Usted seleccionó un sándwich {self.tamano[1]} con "
         if len(self.lista_descriptiva)>0:
             for ingrediente in self.lista_descriptiva:
                 txt=txt+ingrediente[1]+", "
-            txt=txt[:-2] # Elimina la �ltima ", "
+            txt=txt[:-2] # Elimina la última ", "
         else:
             txt=txt+"Queso"
         print(txt+"\n"+f"Subtotal a pagar por un sándwich {self.tamano[1]}: {self.precio}")

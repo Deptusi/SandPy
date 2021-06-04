@@ -1,5 +1,8 @@
-# autor: German Bermudez
-from Sand_functions import *
-from Sand_classes import *
-imprimir_titulo()
-imprimit_total(realizar_ordenes())
+#Sandwiches UCAB
+from Sand_interactions import *
+
+def main():
+    iniciar_programa()
+
+if __name__ == "__main__":
+    main()
