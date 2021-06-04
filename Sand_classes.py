@@ -79,7 +79,9 @@ class Sandwich():
 
     def imprimir_seleccion(self, numero_descuento):
         """Realiza un resumen de la orden al finalizar el pedido"""
+        print (f"Cupón válido,  descuento del {numero_descuento}% aplicado\n")
         self.actualizar_precio(numero_descuento)
+        print("*"*35)
         txt=f"Usted seleccionó un sándwich {self.tamano[1]} con "
         if len(self.lista_descriptiva)>0:
             for ingrediente in self.lista_descriptiva:

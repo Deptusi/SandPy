@@ -2,6 +2,7 @@
 def ingresar_cupon():
     salir = False
     descuento_porcentaje = 0
+    print('*'*35)
     while not salir:
         respuesta = input("¿Usted tiene un cupon [s/n]? ")
         if (respuesta == "s"):

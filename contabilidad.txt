@@ -1,5 +1,3 @@
 1|Triple/580|580
 2|Doble-Doble Queso-Pepperoni/508.5|508.5
 3|Doble/430|430
-4|Individual-Jamón-Champiñones/355;Individual-Jamón-Champiñones/319.5|674.5
-5|Individual-Pepperoni-Salchichón-Aceitunas/438.5|438.5

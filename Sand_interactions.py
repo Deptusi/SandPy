@@ -63,7 +63,7 @@ def iniciar_programa():
             else:
                 if salir == "n":
                     salir==""
-        print("*"*35,)
+        print("*"*35)
     print("")
 
 ## Esta funcion es para dar al usuario la opcion de escoger que quiere hacer en el sistema

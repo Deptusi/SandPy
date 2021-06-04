@@ -19,11 +19,11 @@ def devolver_diccionario(numero_orden):
         contador_ingredientes = {
             "ja":5,
             "ch":5,
-            "pi":5,
-            "dq":5,
-            "ac":5,
-            "pp":5,
-            "sa":5
+            "pi":3,
+            "dq":3,
+            "ac":3,
+            "pp":2,
+            "sa":2
         }
         return contador_ingredientes
     else:
